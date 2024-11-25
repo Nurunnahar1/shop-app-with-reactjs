@@ -1,14 +1,14 @@
-  .admin-tools {
+  .admin-tabs {
       display: flex;
       flex-direction: column;
   }
 
-  .admin-tools li a {
+  .admin-tabs li a {
       padding: 15px 20px;
       margin-bottom: 5px;
   }
 
-  .admin-tools li a.active {
+  .admin-tabs li a.active {
       background-color: red;
       color: #fff;
   }
