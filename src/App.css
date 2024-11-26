@@ -9,6 +9,23 @@
   }
 
   .admin-tabs li a.active {
-      background-color: red;
+      background-color: red !important;
       color: #fff;
+  }
+
+  .data-header {
+      display: flex;
+      justify-content: space-between;
+  }
+
+  .data-header button {
+      padding: 0px 20px;
+      border-radius: 7px;
+  }
+
+  .table td {
+      vertical-align: middle !important;
+  }
+  .table td img{
+    height: 40px;
   }

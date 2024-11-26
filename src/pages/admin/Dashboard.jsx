@@ -1,3 +1,4 @@
+import { NavLink, Outlet } from "react-router-dom";
 import Bradcrumb from "../../components/Bradcrumb";
 
 const Dashboard = () => {
@@ -11,32 +12,29 @@ const Dashboard = () => {
             <div className="row">
               <div className="col-md-3">
                 <ul role="tablist" className="admin-tabs nav nav-tabs outline">
-                  <li role="presentation" className="active">
-                    <a href="#first-tab-2" role="tab" data-toggle="tab">
-                      First
-                    </a>
+                  <li role="presentation">
+                    <NavLink to="createproduct">Products</NavLink>
                   </li>
                   <li role="presentation">
-                    <a href="#second-tab-2" role="tab" data-toggle="tab">
-                      Second
-                    </a>
+                    <NavLink to="tag">Tag</NavLink>
                   </li>
                   <li role="presentation">
-                    <a href="#third-tab-2" role="tab" data-toggle="tab">
-                      Third
-                    </a>
+                    <NavLink to="category">Category</NavLink>
+                  </li>
+                  <li role="presentation">
+                    <NavLink to="brand">Brands</NavLink>
                   </li>
                 </ul>
               </div>
-              <div className="col-md-9">Content</div>
-               
-         
+              <div className="col-md-9">
+                <Outlet />
               </div>
             </div>
-            {/* end of row*/}
           </div>
-          {/* end of section content*/}
-        
+          {/* end of row*/}
+        </div>
+        {/* end of section content*/}
+
         {/* end of container*/}
       </section>
     </>
