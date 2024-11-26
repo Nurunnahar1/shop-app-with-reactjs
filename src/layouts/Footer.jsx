@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <>
-      <>
+      
         <footer id="footer-widgets">
           <div className="container">
             <div className="go-top">
@@ -165,7 +165,7 @@ const Footer = () => {
           </div>
           {/* end of container*/}
         </footer>
-      </>
+    
     </>
   );
 };

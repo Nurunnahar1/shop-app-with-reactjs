@@ -2,14 +2,43 @@ import ToggleSwitch from "../../components/ToggleSwitch";
 import { BiShowAlt } from "react-icons/bi";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
+import ModalPopup from "../../components/modal/ModalPopup";
+import { useState } from "react";
 
 const Brand = () => {
+  const [modal, setModal] = useState(false);
+  const [view, setView] = useState(true);
   return (
     <>
+      {modal && (
+        <ModalPopup title="Create New Band" hide={setModal}>
+          <form action="">
+            <label>
+              Name
+              <input type="text" className="form-control" />
+            </label>
+            <label>
+              Logo
+              <input type="file" className="form-control" />
+            </label>
+            <label>
+              <button className="btn btn-color btn-block">Create</button>
+            </label>
+          </form>
+        </ModalPopup>
+      )}
+      {view && (
+        <ModalPopup title="Details" hide={setView}>
+          show
+        </ModalPopup>
+      )}
+
       <div className="data">
         <div className="data-header">
           <h2>All Brands</h2>
-          <button className="btn btn-primary">Create New Brand</button>
+          <button className="btn btn-primary" onClick={() => setModal(true)}>
+            Create New Brand
+          </button>
         </div>
         <hr />
         <table className="table">
@@ -40,7 +69,7 @@ const Brand = () => {
                 <ToggleSwitch />
               </td>
               <td>
-                <button>
+                <button onClick={()=>setView(true)}>
                   <BiShowAlt />
                 </button>
                 <button>
