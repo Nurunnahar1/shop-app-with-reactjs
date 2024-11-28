@@ -1,6 +1,6 @@
 import "./ModalPopup.css";
 
-const ModalPopup = ({title, hide, children }) => {
+const ModalPopup = ({ title, hide, children }) => {
   return (
     <div className="modal-popup-wrap">
       <div className="modal-body">
