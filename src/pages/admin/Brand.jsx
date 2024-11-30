@@ -4,22 +4,58 @@ import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
 import ModalPopup from "../../components/modal/ModalPopup";
 import { useState } from "react";
+import axios from "axios";
+import { createSlug, dataFix } from "../../utils/helper";
+// import { cloudinaryImageUpload } from "../../utils/cloudinary";
 
 const Brand = () => {
   const [modal, setModal] = useState(false);
-  const [view, setView] = useState(true);
+  const [view, setView] = useState(false);
+  const [brand, setBrand] = useState("");
+  // const [file, setFile] = useState(null);
+
+  const handleCreateBrand = async (e) => {
+    e.preventDefault();
+
+    // const fileData = await cloudinaryImageUpload({
+    //   file,
+    //   cloudName: "dndizynno",
+    //   preset: "upload_image",
+    // });
+
+    const response = await axios.post(
+      "http://localhost:5050/brands",
+      dataFix({
+        name: brand,
+        slug: createSlug(brand),
+        logo: null,
+        // logo: fileData.secure_url,
+      })
+    );
+    setModal(false);
+  };
+
   return (
     <>
       {modal && (
         <ModalPopup title="Create New Band" hide={setModal}>
-          <form action="">
+          <form onSubmit={handleCreateBrand}>
             <label>
               Name
-              <input type="text" className="form-control" />
+              <input
+                type="text"
+                className="form-control"
+                value={brand}
+                onChange={(e) => setBrand(e.target.value)}
+              />
             </label>
             <label>
               Logo
-              <input type="file" className="form-control" />
+              <input
+                type="file"
+                className="form-control" 
+                onChange={(e) => setFile(e.target.files[0])}
+              />
             </label>
             <label>
               <button className="btn btn-color btn-block">Create</button>
@@ -69,7 +105,7 @@ const Brand = () => {
                 <ToggleSwitch />
               </td>
               <td>
-                <button onClick={()=>setView(true)}>
+                <button onClick={() => setView(true)}>
                   <BiShowAlt />
                 </button>
                 <button>

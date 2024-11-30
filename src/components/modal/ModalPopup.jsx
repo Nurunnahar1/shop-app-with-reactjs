@@ -18,3 +18,5 @@ const ModalPopup = ({ title, hide, children }) => {
 };
 
 export default ModalPopup;
+
+

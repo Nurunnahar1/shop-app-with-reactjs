@@ -1,6 +1,17 @@
 {
-    "brands":[],
-    "categories":[],
-    "tags":[],
-    "products":[]
+  "brands": [
+    {
+      "id": "8be4",
+      "name": "apple vission",
+      "slug": "apple-vission",
+      "logo": null,
+      "status": true,
+      "trass": false,
+      "createdAt": 1732971243349,
+      "updatedAt": null
+    }
+  ],
+  "categories": [],
+  "tags": [],
+  "products": []
 }
