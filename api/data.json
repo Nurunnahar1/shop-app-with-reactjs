@@ -1,13 +1,53 @@
 {
   "brands": [
     {
-      "id": "8be4",
-      "name": "apple vission",
-      "slug": "apple-vission",
-      "logo": null,
+      "id": "6d79",
+      "name": "apple vision",
+      "slug": "apple-vision",
+      "logo": "https://res.cloudinary.com/dndizynno/image/upload/v1733025752/exm9w27hfscamu3nvqxs.jpg",
       "status": true,
       "trass": false,
-      "createdAt": 1732971243349,
+      "createdAt": 1733025764182,
+      "updatedAt": null
+    },
+    {
+      "id": "3aec",
+      "name": "aa bb",
+      "slug": "aa-bb",
+      "logo": "https://res.cloudinary.com/dndizynno/image/upload/v1733114201/t3jrjn5lm8q1si6k8enf.jpg",
+      "status": true,
+      "trass": false,
+      "createdAt": 1733114213853,
+      "updatedAt": null
+    },
+    {
+      "id": "0123",
+      "name": "bb cc",
+      "slug": "bb-cc",
+      "logo": "https://res.cloudinary.com/dndizynno/image/upload/v1733121244/nsirhtejxg3dstjvwqmi.jpg",
+      "status": true,
+      "trass": false,
+      "createdAt": 1733121256587,
+      "updatedAt": null
+    },
+    {
+      "id": "6b75",
+      "name": "bb cc",
+      "slug": "bb-cc",
+      "logo": "https://res.cloudinary.com/dndizynno/image/upload/v1733121254/totdrx4r9byyzwkwxwxd.jpg",
+      "status": true,
+      "trass": false,
+      "createdAt": 1733121266642,
+      "updatedAt": null
+    },
+    {
+      "id": "bf14",
+      "name": "dd ee",
+      "slug": "dd-ee",
+      "logo": "https://res.cloudinary.com/dndizynno/image/upload/v1733121481/ufiycf0lhtdj5ktatzxj.jpg",
+      "status": true,
+      "trass": false,
+      "createdAt": 1733121493689,
       "updatedAt": null
     }
   ],

@@ -5,11 +5,14 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import "./assets/css/bundle.css";
 import "./assets/css/style.css";
+import ReduxProvider from "./provider/ReduxProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <ReduxProvider>
+        <App />
+      </ReduxProvider>
     </BrowserRouter>
   </StrictMode>
 );

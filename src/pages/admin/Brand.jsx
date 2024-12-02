@@ -3,35 +3,42 @@ import { BiShowAlt } from "react-icons/bi";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
 import ModalPopup from "../../components/modal/ModalPopup";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import { createSlug, dataFix } from "../../utils/helper";
-// import { cloudinaryImageUpload } from "../../utils/cloudinary";
+import { cloudinaryImageUpload } from "../../utils/cloudinary";
+import ReduxContext from "../../context/ReduxContext";
 
 const Brand = () => {
   const [modal, setModal] = useState(false);
   const [view, setView] = useState(false);
   const [brand, setBrand] = useState("");
-  // const [file, setFile] = useState(null);
+  const [file, setFile] = useState(null);
+
+  //set data for store dispatch
+  const { store, dispatch } = useContext(ReduxContext);
 
   const handleCreateBrand = async (e) => {
     e.preventDefault();
 
-    // const fileData = await cloudinaryImageUpload({
-    //   file,
-    //   cloudName: "dndizynno",
-    //   preset: "upload_image",
-    // });
+    const fileData = await cloudinaryImageUpload({
+      file,
+      cloudName: "dndizynno",
+      preset: "upload_image",
+    });
 
     const response = await axios.post(
       "http://localhost:5050/brands",
       dataFix({
         name: brand,
         slug: createSlug(brand),
-        logo: null,
-        // logo: fileData.secure_url,
+        logo: fileData.secure_url,
       })
     );
+    dispatch({
+      type: "BRAND_DATA_CREATE",
+      payload: response.data,
+    });
     setModal(false);
   };
 
@@ -53,7 +60,7 @@ const Brand = () => {
               Logo
               <input
                 type="file"
-                className="form-control" 
+                className="form-control"
                 onChange={(e) => setFile(e.target.files[0])}
               />
             </label>
@@ -90,32 +97,33 @@ const Brand = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>id</td>
-              <td>
-                <img
-                  src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTUNki_Kr141E0ie43RqlvEA-V22SZsSeDXK2TlofouDmQggqc9e--fUskRSPYJZ9Qrc77cN7vut8hIc55B163aRBKKo6g4YWXO3vjDaEk"
-                  alt=""
-                />
-              </td>
-              <td>Apple</td>
-              <td>apple</td>
-              <td>10-12-2024</td>
-              <td>
-                <ToggleSwitch />
-              </td>
-              <td>
-                <button onClick={() => setView(true)}>
-                  <BiShowAlt />
-                </button>
-                <button>
-                  <CiEdit />
-                </button>
-                <button>
-                  <MdDeleteOutline />
-                </button>
-              </td>
-            </tr>
+            {store.brands.map((item, index) => {
+              return (
+                <tr key={item.id}>
+                  <td>{item.id}</td>
+                  <td>
+                    <img src={item.logo} alt="" />
+                  </td>
+                  <td>{item.name}</td>
+                  <td>{item.slug}</td>
+                  <td>{item.createdAt}</td>
+                  <td>
+                    <ToggleSwitch />
+                  </td>
+                  <td>
+                    <button onClick={() => setView(true)}>
+                      <BiShowAlt />
+                    </button>
+                    <button>
+                      <CiEdit />
+                    </button>
+                    <button>
+                      <MdDeleteOutline />
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
