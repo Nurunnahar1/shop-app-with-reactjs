@@ -7,10 +7,10 @@ import SingleProduct from "./components/product/SingleProduct";
 import Cart from "./pages/ecom/Cart";
 import Checkout from "./pages/ecom/Checkout";
 import Dashboard from "./pages/admin/Dashboard";
-import Brand from "./pages/admin/Brand";
-import Tag from "./pages/admin/Tag";
+import Brand from "./pages/admin/Brand"; 
 import Category from "./pages/admin/Category";
 import CreateProduct from "./pages/admin/CreateProduct";
+import TagCreate from "./pages/admin/tag/TagCreate";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
         <Route path="/checkout" element={<Checkout />}></Route>
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="brand" element={<Brand />} />
-          <Route path="tag" element={<Tag />} />
+          <Route path="tag" element={<TagCreate />} />
           <Route path="category" element={<Category />} />
           <Route path="createproduct" element={<CreateProduct />} />
         </Route>
