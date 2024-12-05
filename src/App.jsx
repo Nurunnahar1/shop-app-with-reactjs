@@ -9,8 +9,8 @@ import Checkout from "./pages/ecom/Checkout";
 import Dashboard from "./pages/admin/Dashboard";
 import Brand from "./pages/admin/Brand"; 
 import Category from "./pages/admin/Category";
-import CreateProduct from "./pages/admin/CreateProduct";
-import TagCreate from "./pages/admin/tag/TagCreate";
+import CreateProduct from "./pages/admin/CreateProduct"; 
+import Tag from "./pages/admin/tag/Tag";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
         <Route path="/checkout" element={<Checkout />}></Route>
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="brand" element={<Brand />} />
-          <Route path="tag" element={<TagCreate />} />
+          <Route path="tag" element={<Tag />} />
           <Route path="category" element={<Category />} />
           <Route path="createproduct" element={<CreateProduct />} />
         </Route>

@@ -52,6 +52,25 @@
     }
   ],
   "categories": [],
-  "tags": [],
+  "tags": [
+    {
+      "id": "86a4",
+      "name": "banana",
+      "slug": "banana",
+      "status": true,
+      "trass": false,
+      "createdAt": 1733372370190,
+      "updatedAt": null
+    },
+    {
+      "id": "823f",
+      "name": "Banana",
+      "slug": "banana",
+      "status": true,
+      "trass": false,
+      "createdAt": 1733372403667,
+      "updatedAt": null
+    }
+  ],
   "products": []
 }
