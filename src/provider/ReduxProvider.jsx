@@ -7,19 +7,31 @@ import initialState from "../redux/initialState";
 const ReduxProvider = ({ children }) => {
   const [store, dispatch] = useReducer(reduxReducer, initialState);
 
+  //brand data load
   const LoadAllBrands = async () => {
     const response = await axios.get("http://localhost:5050/brands");
     dispatch({
       type: "BRAND_DATA_LOAD",
-      payload: response.data
+      payload: response.data,
     });
     // console.log(response.data);
   };
 
+  //tag data load
+  const LoadAllTags = async () => {
+    const response = await axios.get("http://localhost:5050/tags");
+    dispatch({
+      type: "TAG_DATA_LOAD",
+      payload: response.data,
+    });
+
+ 
+  };
+
   useEffect(() => {
     LoadAllBrands();
+    LoadAllTags();
   }, []);
-
 
   return (
     <ReduxContext.Provider value={{ store, dispatch }}>

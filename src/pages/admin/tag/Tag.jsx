@@ -1,26 +1,40 @@
- import axios from 'axios'; 
-import { createSlug, dataFix } from '../../../utils/helper';
-import ModalPopup from '../../../components/modal/ModalPopup';
-import { useState } from 'react';
- 
+import axios from "axios";
+import { createSlug, dataFix } from "../../../utils/helper";
+import ModalPopup from "../../../components/modal/ModalPopup";
+import { useContext, useState } from "react";
+import ReduxContext from "../../../context/ReduxContext";
+import ToggleSwitch from "../../../components/ToggleSwitch";
+import { BiShowAlt } from "react-icons/bi";
+import { CiEdit } from "react-icons/ci";
+import { MdDeleteOutline } from "react-icons/md";
+
 const Tag = () => {
-     const [modal, setModal] = useState(false);
-     const [tag, setTag] = useState("");
+  const [modal, setModal] = useState(false);
+  const [tag, setTag] = useState("");
+  const [view, setView] = useState(false);
 
-     //tag data create
+  //get tag data from context
+  const {store, dispatch }= useContext(ReduxContext);
 
-     const handleCreateTag = async (e) => {
-       e.preventDefault();
+  //tag data create
 
-       const response = await axios.post(
-         "http://localhost:5050/tags",
-         dataFix({
-           name: tag,
-           slug: createSlug(tag),
-         })
-       );
-       setModal(false);
-     };
+  const handleCreateTag = async (e) => {
+    e.preventDefault();
+
+    const response = await axios.post(
+      "http://localhost:5050/tags",
+      dataFix({
+        name: tag,
+        slug: createSlug(tag),
+      })
+    );
+    dispatch({
+      type: "TAG_DATA_SHOW",
+        payload:response.data
+    })
+    setModal(false);
+  };
+
   return (
     <>
       {modal && (
@@ -42,6 +56,8 @@ const Tag = () => {
           </form>
         </ModalPopup>
       )}
+
+      {view && <ModalPopup>show</ModalPopup>}
       <div className="data">
         <div className="data-header">
           <h2>All Tags</h2>
@@ -54,7 +70,6 @@ const Tag = () => {
           <thead>
             <tr>
               <th>#</th>
-              <th>Logo</th>
               <th>Name</th>
               <th>Slug</th>
               <th>Created At</th>
@@ -62,14 +77,11 @@ const Tag = () => {
               <th>Action</th>
             </tr>
           </thead>
-          {/* <tbody>
-             
+          <tbody>
+            {store.tags.map((item, index) => {
               return (
                 <tr key={item.id}>
                   <td>{index + 1}</td>
-                  <td>
-                    <img src={item.logo} alt="" />
-                  </td>
                   <td>{item.name}</td>
                   <td>{item.slug}</td>
                   <td>{item.createdAt}</td>
@@ -90,11 +102,11 @@ const Tag = () => {
                 </tr>
               );
             })}
-          </tbody> */}
+          </tbody>
         </table>
       </div>
     </>
   );
- }
- 
- export default Tag
+};
+
+export default Tag;

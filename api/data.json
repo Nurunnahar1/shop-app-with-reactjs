@@ -70,6 +70,15 @@
       "trass": false,
       "createdAt": 1733372403667,
       "updatedAt": null
+    },
+    {
+      "id": "e06e",
+      "name": "potato",
+      "slug": "potato",
+      "status": true,
+      "trass": false,
+      "createdAt": 1733374031265,
+      "updatedAt": null
     }
   ],
   "products": []
